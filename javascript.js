@@ -1,6 +1,7 @@
 let firstNumber;
 let secondNumber;
 let operator;
+const error = "cringe"
 
 function add(first, second){
     return first + second;
@@ -12,7 +13,7 @@ function multiply(first, second){
     return first * second;
 }
 function divide(first, second){
-    if(second === 0) return "ERROR";
+    if(second === 0) return error;
     return first / second;
 }
 function operate(operator, first, second){
