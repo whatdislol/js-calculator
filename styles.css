@@ -13,20 +13,23 @@
     width: 400px;
     height: 100px;
     padding: 8px;
+    background-color: lightgray;
 }
 
 .display *{
     width: 100%;
     text-align: right;
-    line-height: 50%;
 }
 
 .equation{
     height: 25%;
+    font-size: 16px;
+    padding-right: 4px;
 }
 
 .current{
     height: 75%;
+    font-size: 64px;
 }
 
 .buttons{
