@@ -50,6 +50,8 @@ function operate(operator, first, second){
             return multiply(first, second);
         case "/":
             return divide(first, second);
+        default:
+            return currentValue;
     }
 }
 
@@ -68,14 +70,18 @@ function onNumberClicked(number){
 }
 
 function onOperatorClicked(operatorSelected){
+    if(operator){
+        calculate();
+    }
     operator = operatorSelected;
     currentValue = 0;
 }
 
 function calculate(){
     let result = operate(operator, firstNumber, secondNumber);
-    firstNumber = result;
     numberDisplay.textContent = result;
+    firstNumber = result;
+    currentValue = result;
     operator = "";
 }
 
