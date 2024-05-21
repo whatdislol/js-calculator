@@ -70,7 +70,6 @@ function onNumberClicked(number){
 function onOperatorClicked(operatorSelected){
     operator = operatorSelected;
     currentValue = 0;
-    numberDisplay.textContent = "0";
 }
 
 function calculate(){
