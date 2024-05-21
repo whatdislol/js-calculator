@@ -91,10 +91,14 @@ function clear(){
 }
 
 function deleteNumber(){
-    if(numberDisplay.textContent.length > 0){
+    if(numberDisplay.textContent.length === 1){
+        numberDisplay.textContent = "0";
+        currentValue = 0;
+    } else if(numberDisplay.textContent.length > 1){
         numberDisplay.textContent = numberDisplay.textContent.slice(0, -1);
         currentValue = +numberDisplay.textContent;
     }
+    
 }
 
 function togglePolarity(){
