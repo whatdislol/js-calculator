@@ -56,7 +56,7 @@ function operate(operator, first, second){
 }
 
 function onNumberClicked(number){
-    if(currentValue === 0){
+    if(currentValue === 0 && numberDisplay.textContent !== "0."){
         numberDisplay.textContent = "";
     }
 
@@ -79,7 +79,7 @@ function onOperatorClicked(operatorSelected){
 
 function calculate(){
     let result = operate(operator, firstNumber, secondNumber);
-    result = parseFloat(result.toFixed(3)) + 0;
+    result = parseFloat(result.toFixed(3));
     numberDisplay.textContent = result;
     firstNumber = result;
     currentValue = result;
@@ -112,6 +112,9 @@ function togglePolarity(){
 }
 
 function decimal(){
+    if(currentValue === 0){
+        numberDisplay.textContent = 0;
+    }
     if(!numberDisplay.textContent.includes(".")){
         numberDisplay.textContent += "."
     }
