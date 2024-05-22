@@ -87,6 +87,8 @@ function calculate(){
 
 function clear(){
     currentValue = 0;
+    firstNumber = 0;
+    secondNumber = 0;
     numberDisplay.textContent = "0";
 }
 
@@ -97,12 +99,11 @@ function deleteNumber(){
     } else if(numberDisplay.textContent.length > 1){
         numberDisplay.textContent = numberDisplay.textContent.slice(0, -1);
         currentValue = +numberDisplay.textContent;
-    }
-    
+    } 
 }
 
 function togglePolarity(){
-
+    
 }
 
 function decimal(){
