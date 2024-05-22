@@ -103,7 +103,9 @@ function deleteNumber(){
 }
 
 function togglePolarity(){
-    
+    currentValue = -currentValue;
+    firstNumber = -firstNumber;
+    numberDisplay.textContent = currentValue;
 }
 
 function decimal(){
