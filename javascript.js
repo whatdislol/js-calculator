@@ -79,6 +79,7 @@ function onOperatorClicked(operatorSelected){
 
 function calculate(){
     let result = operate(operator, firstNumber, secondNumber);
+    result = parseFloat(result.toFixed(3)) + 0;
     numberDisplay.textContent = result;
     firstNumber = result;
     currentValue = result;
@@ -111,7 +112,9 @@ function togglePolarity(){
 }
 
 function decimal(){
-
+    if(!numberDisplay.textContent.includes(".")){
+        numberDisplay.textContent += "."
+    }
 }
 
 function percentage(){
