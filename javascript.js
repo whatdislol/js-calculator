@@ -93,13 +93,15 @@ function clear(){
 }
 
 function deleteNumber(){
-    if(numberDisplay.textContent.length === 1){
-        numberDisplay.textContent = "0";
-        currentValue = 0;
-    } else if(numberDisplay.textContent.length > 1){
-        numberDisplay.textContent = numberDisplay.textContent.slice(0, -1);
-        currentValue = +numberDisplay.textContent;
-    } 
+    if(currentValue % 1 !== 0){
+        let deletedNumStr = numberDisplay.textContent.slice(0, -1);
+        currentValue = parseFloat(deletedNumStr) + 0;
+    } else if(currentValue < 0) {
+        currentValue = Math.ceil(currentValue / 10);
+    } else {
+        currentValue = Math.floor(currentValue / 10);
+    }
+    numberDisplay.textContent = currentValue;
 }
 
 function togglePolarity(){
