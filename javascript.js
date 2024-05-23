@@ -1,6 +1,6 @@
 let firstNumber = 0;
 let secondNumber = null;
-let operator;
+let operator = null;
 let currentValue = 0;
 const ERROR = "cringe";
 const numberButtons = document.querySelectorAll(".operand");
@@ -80,7 +80,7 @@ function onOperatorClicked(operatorSelected){
 }
 
 function calculate(){
-    if(!operator || secondNumber === null) return;
+    if(!operator || !secondNumber) return;
     let result = operate(operator, firstNumber, secondNumber);
     if(result !== ERROR){
         result = parseFloat(result.toFixed(3));
@@ -95,14 +95,14 @@ function calculate(){
         firstNumber = 0;
     }
     secondNumber = null;
-    operator = "";
+    operator = null;
 }
 
 function clear(){
     currentValue = 0;
     firstNumber = 0;
     secondNumber = null;
-    operator = "";
+    operator = null;
     numberDisplay.textContent = "0";
     equationDisplay.textContent = "";
 }
