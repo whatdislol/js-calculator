@@ -80,6 +80,7 @@ function onOperatorClicked(operatorSelected){
 }
 
 function calculate(){
+    if(!operator) return;
     let result = operate(operator, firstNumber, secondNumber);
     result = parseFloat(result.toFixed(3));
     numberDisplay.textContent = result;
