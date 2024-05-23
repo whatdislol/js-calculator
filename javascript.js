@@ -2,7 +2,7 @@ let firstNumber = 0;
 let secondNumber;
 let operator;
 let currentValue = 0;
-const ERROR = "cringe"
+const ERROR = "cringe";
 const numberButtons = document.querySelectorAll(".operand");
 const operatorButtons = document.querySelectorAll(".operator");
 const clearButton = document.querySelector(".clear");
@@ -14,6 +14,7 @@ const calculateButton = document.querySelector(".calculate");
 const equationDisplay = document.querySelector(".equation");
 const numberDisplay = document.querySelector(".current");
 
+document.addEventListener("keydown", onKeyPress);
 numberButtons.forEach((button) => {
     button.addEventListener("click", () => onNumberClicked(+button.textContent));
 });
@@ -135,5 +136,37 @@ function percentage(){
         secondNumber = currentValue;
     } else {
         firstNumber = currentValue;
+    }
+}
+
+function onKeyPress(event){
+    const key = event.key;
+    const keyMap = {
+        "0": "zero",
+        "1": "one",
+        "2": "two",
+        "3": "three",
+        "4": "four",
+        "5": "five",
+        "6": "six",
+        "7": "seven",
+        "8": "eight",
+        "9": "nine",
+        "+": "add",
+        "-": "subtract",
+        "*": "multiply",
+        "/": "divide",
+        "Escape": "clear",
+        "%": "percentage",
+        "Backspace": "delete",
+        ".": "decimal",
+        "=": "calculate"
+    };
+    if(key in keyMap){
+        const buttonClass = keyMap[key];
+        const button = document.querySelector(`.${buttonClass}`);
+        if (button) {
+            button.click();
+        }
     }
 }
