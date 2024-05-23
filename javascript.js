@@ -82,11 +82,18 @@ function onOperatorClicked(operatorSelected){
 function calculate(){
     if(!operator) return;
     let result = operate(operator, firstNumber, secondNumber);
-    result = parseFloat(result.toFixed(3));
-    numberDisplay.textContent = result;
-    equationDisplay.textContent = `${firstNumber} ${operator} ${secondNumber} = ${result}`;
-    firstNumber = result;
-    currentValue = result;
+    if(result !== ERROR){
+        result = parseFloat(result.toFixed(3));
+        numberDisplay.textContent = result;
+        equationDisplay.textContent = `${firstNumber} ${operator} ${secondNumber} = ${result}`;
+        firstNumber = result;
+        currentValue = result;
+    } else {
+        numberDisplay.textContent = ERROR;
+        equationDisplay.textContent = ERROR;
+        currentValue = 0;
+        firstNumber = 0;
+    }
     operator = "";
 }
 
