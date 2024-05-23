@@ -1,4 +1,4 @@
-let firstNumber;
+let firstNumber = 0;
 let secondNumber;
 let operator;
 let currentValue = 0;
@@ -75,12 +75,14 @@ function onOperatorClicked(operatorSelected){
     }
     operator = operatorSelected;
     currentValue = 0;
+    equationDisplay.textContent = `${firstNumber} ${operator} `;
 }
 
 function calculate(){
     let result = operate(operator, firstNumber, secondNumber);
     result = parseFloat(result.toFixed(3));
     numberDisplay.textContent = result;
+    equationDisplay.textContent = `${firstNumber} ${operator} ${secondNumber} = ${result}`;
     firstNumber = result;
     currentValue = result;
     operator = "";
@@ -88,9 +90,11 @@ function calculate(){
 
 function clear(){
     currentValue = 0;
-    firstNumber = undefined;
+    firstNumber = 0;
     secondNumber = undefined;
     numberDisplay.textContent = "0";
+    equationStr = "";
+    equationDisplay.textContent = equationStr;
 }
 
 function deleteNumber(){
