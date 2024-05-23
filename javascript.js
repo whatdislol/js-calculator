@@ -109,6 +109,7 @@ function deleteNumber(){
         currentValue = Math.floor(currentValue / 10);
     }
     numberDisplay.textContent = currentValue;
+    if(!operator) firstNumber = currentValue;
 }
 
 function togglePolarity(){
