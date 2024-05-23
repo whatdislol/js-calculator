@@ -160,7 +160,8 @@ function onKeyPress(event){
         "%": "percentage",
         "Backspace": "delete",
         ".": "decimal",
-        "=": "calculate"
+        "=": "calculate",
+        "Enter": "calculate"
     };
     if(key in keyMap){
         const buttonClass = keyMap[key];
