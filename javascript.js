@@ -70,7 +70,7 @@ function onNumberClicked(number){
 }
 
 function onOperatorClicked(operatorSelected){
-    if(operator){
+    if(operator && secondNumber === currentValue){
         calculate();
     }
     operator = operatorSelected;
@@ -88,8 +88,8 @@ function calculate(){
 
 function clear(){
     currentValue = 0;
-    firstNumber = 0;
-    secondNumber = 0;
+    firstNumber = undefined;
+    secondNumber = undefined;
     numberDisplay.textContent = "0";
 }
 
