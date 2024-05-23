@@ -1,5 +1,5 @@
 let firstNumber = 0;
-let secondNumber;
+let secondNumber = null;
 let operator;
 let currentValue = 0;
 const ERROR = "cringe";
@@ -57,7 +57,7 @@ function operate(operator, first, second){
 }
 
 function onNumberClicked(number){
-    if(currentValue === 0 && numberDisplay.textContent !== "0."){
+    if(currentValue === 0){
         numberDisplay.textContent = "";
     }
 
@@ -80,7 +80,7 @@ function onOperatorClicked(operatorSelected){
 }
 
 function calculate(){
-    if(!operator) return;
+    if(!operator || secondNumber === null) return;
     let result = operate(operator, firstNumber, secondNumber);
     if(result !== ERROR){
         result = parseFloat(result.toFixed(3));
@@ -94,16 +94,17 @@ function calculate(){
         currentValue = 0;
         firstNumber = 0;
     }
+    secondNumber = null;
     operator = "";
 }
 
 function clear(){
     currentValue = 0;
     firstNumber = 0;
-    secondNumber = undefined;
+    secondNumber = null;
+    operator = "";
     numberDisplay.textContent = "0";
-    equationStr = "";
-    equationDisplay.textContent = equationStr;
+    equationDisplay.textContent = "";
 }
 
 function deleteNumber(){
