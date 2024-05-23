@@ -2,6 +2,7 @@ let firstNumber = 0;
 let secondNumber = null;
 let operator = null;
 let currentValue = 0;
+let isNewValue = true;
 const ERROR = "cringe";
 const numberButtons = document.querySelectorAll(".operand");
 const operatorButtons = document.querySelectorAll(".operator");
@@ -57,7 +58,7 @@ function operate(operator, first, second){
 }
 
 function onNumberClicked(number){
-    if(currentValue === 0){
+    if(currentValue === 0 && isNewValue){
         numberDisplay.textContent = "";
     }
 
@@ -68,19 +69,21 @@ function onNumberClicked(number){
     } else {
         firstNumber = currentValue;
     }
+    isNewValue = false;
 }
 
 function onOperatorClicked(operatorSelected){
     if(operator && secondNumber === currentValue){
         calculate();
     }
+    isNewValue = true;
     operator = operatorSelected;
     currentValue = 0;
     equationDisplay.textContent = `${firstNumber} ${operator} `;
 }
 
 function calculate(){
-    if(!operator || !secondNumber) return;
+    if(!operator || secondNumber === null) return;
     let result = operate(operator, firstNumber, secondNumber);
     if(result !== ERROR){
         result = parseFloat(result.toFixed(3));
@@ -90,10 +93,11 @@ function calculate(){
         currentValue = result;
     } else {
         numberDisplay.textContent = ERROR;
-        equationDisplay.textContent = ERROR;
+        equationDisplay.textContent = "";
         currentValue = 0;
         firstNumber = 0;
     }
+    isNewValue = true;
     secondNumber = null;
     operator = null;
 }
@@ -103,6 +107,7 @@ function clear(){
     firstNumber = 0;
     secondNumber = null;
     operator = null;
+    isNewValue = true;
     numberDisplay.textContent = "0";
     equationDisplay.textContent = "";
 }
@@ -136,6 +141,7 @@ function decimal(){
     }
     if(!numberDisplay.textContent.includes(".")){
         numberDisplay.textContent += "."
+        isNewValue = false;
     }
 }
 
