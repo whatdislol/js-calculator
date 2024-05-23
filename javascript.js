@@ -61,7 +61,8 @@ function onNumberClicked(number){
     if(currentValue === 0 && isNewValue){
         numberDisplay.textContent = "";
     }
-
+    if(numberDisplay.textContent.length >= 12) return;
+    
     numberDisplay.textContent += number;
     currentValue = +numberDisplay.textContent;
     if(operator){
@@ -86,7 +87,7 @@ function calculate(){
     if(!operator || secondNumber === null) return;
     let result = operate(operator, firstNumber, secondNumber);
     if(result !== ERROR){
-        result = parseFloat(result.toFixed(3));
+        result = parseFloat(result.toFixed(6).slice(0, 13));
         numberDisplay.textContent = result;
         equationDisplay.textContent = `${firstNumber} ${operator} ${secondNumber} = ${result}`;
         firstNumber = result;
