@@ -107,8 +107,12 @@ function deleteNumber(){
 
 function togglePolarity(){
     currentValue = -currentValue;
-    firstNumber = -firstNumber;
     numberDisplay.textContent = currentValue;
+    if(operator){
+        secondNumber = currentValue;
+    } else {
+        firstNumber = currentValue;
+    }
 }
 
 function decimal(){
@@ -121,5 +125,11 @@ function decimal(){
 }
 
 function percentage(){
-    
+    currentValue /= 100;
+    numberDisplay.textContent = currentValue;
+    if(operator){
+        secondNumber = currentValue;
+    } else {
+        firstNumber = currentValue;
+    }
 }
